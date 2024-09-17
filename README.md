@@ -1,3 +1,11 @@
+# IMPORTANT
+
+This is a fork that is designed specifically to downgrade the dependencies, thus providing compatibility with the `zeroize` verisons 1.4 and below.  
+
+This branch should only be used as a last resort in a patch section if you also depend on one of the older Solana libraries, _e.g._ Solana version `1.17.6`.
+
+DO NOT USE THIS WITH SOLANA VERSION `2.0` and upwards, because those verions are not affected by the dependency pinning.
+
 <p align="center">
   <img width="460" height="300" src="https://raw.githubusercontent.com/rustls/rustls/main/admin/rustls-logo-web.png">
 </p>
