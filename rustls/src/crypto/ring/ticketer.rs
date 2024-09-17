@@ -172,7 +172,9 @@ impl ProducesTickets for AeadTicketer {
         // [^1]: https://eprint.iacr.org/2020/1491.pdf
         // [^2]: "Authenticated Encryption with Key Identification", fig 6
         //       <https://eprint.iacr.org/2022/1680.pdf>
-        if ConstantTimeEq::ct_ne(&self.key_name[..], alleged_key_name).into() {
+
+        // BECAUSE OF THE DUMBFUCKERY ASSOCIATED WITH ZEROIZE, I had to change this 
+        if ConstantTimeEq::ct_eq(&self.key_name[..], alleged_key_name).unwrap_u8() == 0u8 {
             #[cfg(debug_assertions)]
             debug!("rejected ticket with wrong ticket_name");
             return None;
